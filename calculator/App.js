@@ -7,7 +7,7 @@ import Display from './src/components/Display';
 
 export default function App() {
 
-  const [displayValue, setDisplayValue] = useState(0);
+  const [displayValue, setDisplayValue] = useState("");
 
   const addDigit = n =>{
     setDisplayValue({displayValue: n})
