@@ -1,17 +1,6 @@
 import React from 'react'
-import {Text, Button, StyleSheet, TouchableHighlight, Dimensions} from 'react-native'
+import {Text, StyleSheet, TouchableHighlight, Dimensions} from 'react-native'
 
-export default props =>{
-     const stylesButton = [styles.button]
-     if(props.double) stylesButton.push(styles.buttonDouble)
-     if(props.triple) stylesButton.push(styles.buttonTriple)
-     if(props.operation) stylesButton.push(styles.operationButton)
-     return(
-          <TouchableHighlight onPress={() => props.OnClick(props.label)}>
-               <Text style={stylesButton}>{props.label}</Text>
-          </TouchableHighlight>
-     )
-}
 
 const styles = StyleSheet.create({
      button: {
@@ -36,6 +25,19 @@ const styles = StyleSheet.create({
           width: (Dimensions.get("window").width / 4) * 3
      }
 })
+
+
+export default props =>{
+     const stylesButton = [styles.button]
+     if(props.double) stylesButton.push(styles.buttonDouble)
+     if(props.triple) stylesButton.push(styles.buttonTriple)
+     if(props.operation) stylesButton.push(styles.operationButton)
+     return(
+          <TouchableHighlight onPress={() => props.OnClick(props.label)}>
+               <Text style={stylesButton}>{props.label}</Text>
+          </TouchableHighlight>
+     )
+}
 
 // Aplicação de estilos condicionalmente, a depender do botão
 // Cria-se um array que a depender da propriedade recebida, adiciona ao botão um style
