@@ -24,7 +24,7 @@ export default class App extends Component {
     }
     const currentValue = clearDisplay ? "" : this.state.displayValue
     const displayValue = currentValue + n
-    this.state({displayValue, clearDisplay: false})
+    this.setState({displayValue, clearDisplay: false})
 
 
     if(n !== "."){
@@ -45,14 +45,14 @@ export default class App extends Component {
       this.setState({operation, current: 1, clearDisplay: true})
     }else{
       const equals = operation === "="
-      const value = [...this.state.values]
+      const values = [...this.state.values]
       try{
-        value[0] = eval(`${values[0]} ${this.state.operation} ${values[1]}`)
+        values[0] = eval(`${values[0]} ${this.state.operation} ${values[1]}`)
       }catch (e){
         values[0] = this.state.values[0]
       }
 
-      value[1] = 0
+      values[1] = 0
       this.setState({
         displayValue: `${values[0]}`,
         operation: equals ? null: operation,
