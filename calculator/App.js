@@ -38,7 +38,27 @@ export default class App extends Component {
   }
 
   setOperation = operation => {
-    
+    if (this.state.current === 0){
+      this.setState({operation, current: 1, clearDisplay: true})
+    }else{
+      const equals = operation === "="
+      const value = [...this.state.values]
+      try{
+        value[0] = eval(`${values[0]} ${this.state.operation} ${values[1]}`)
+      }catch (e){
+        values[0] = this.state.values[0]
+      }
+
+      value[1] = 0
+      this.setState({
+        displayValue: values[0],
+        operation: equals ? null: operation,
+        current: equals? 0 : 1,
+        // clearDisplay: true,
+        clearDisplay: !equals,
+        values, 
+      })
+    }
   }
 
   render(){
@@ -78,3 +98,5 @@ const styles = StyleSheet.create({
     flexWrap: "wrap"
   }
 });
+
+// eval - Ele avalia e fazer a operação com os dois números
